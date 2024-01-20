@@ -63,7 +63,7 @@ def main():
 
 
         if maze.check_collision(tank.get_position()):
-            print("FAILURE. DISOWN. EMOTIONAL DAMAGEEEE insert Steven He")
+            print("FAILUREEEEEEEE!!!!!")
             run = False
         
 

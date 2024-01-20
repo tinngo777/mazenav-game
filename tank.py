@@ -6,7 +6,7 @@ class Tank:
     def __init__(self, position, speed):
         self.position = pygame.Vector2(position)
         self.speed = speed
-        self.direction = 90  # Initial direction, 90 degrees (facing north/upwards)
+        self.direction = 0  # 0 degrees mean facing north
         image_path = os.path.join('resources', 'tank.png')
         self.original_image = pygame.image.load(image_path)
         self.image = self.original_image.copy()  # Start without rotation
@@ -18,7 +18,7 @@ class Tank:
         self.direction %= 360
 
         # Rotate the image
-        self.image = pygame.transform.rotate(self.original_image, -self.direction)
+        self.image = pygame.transform.rotate(self.original_image, -self.direction + 90)
 
         # Move the tank
         radian = math.radians(self.direction)
