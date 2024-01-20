@@ -2,6 +2,7 @@
 import pygame
 from tank import Tank
 from maze import Maze
+from user import user_commands
 
 def execute_commands(tank, commands):
     for command in commands:
@@ -37,16 +38,7 @@ def main():
     tank = Tank(starting_position, tank_speed)
     maze = Maze()
 
-    # User-defined commands, guests will input here
-    user_commands = [
-        "forward 3",
-        "right",
-        "forward 5",
-        "left",
-        "forward 6"
-        # Add more commands as needed
-    ]
-
+    #user's command will go here 
     command_generator = execute_commands(tank, user_commands)    
 
     clock = pygame.time.Clock()
@@ -63,7 +55,7 @@ def main():
 
 
         if maze.check_collision(tank.get_position()):
-            print("FAILUREEEEEEEE!!!!!")
+            print("FAILUREEEEEEEE")
             run = False
         
 
