@@ -34,7 +34,7 @@ def main():
 
     #Init tank and maze
     starting_position = (WIDTH * 19 // 20, HEIGHT // 1.086)
-    tank_speed = 15
+    tank_speed = 12
     tank = Tank(starting_position, tank_speed)
     maze = Maze()
 
