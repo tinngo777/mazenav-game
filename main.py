@@ -34,7 +34,7 @@ def main():
 
     #Init tank and maze
     starting_position = (WIDTH * 19 // 20, HEIGHT // 1.086)
-    tank_speed = 4
+    tank_speed = 15
     tank = Tank(starting_position, tank_speed)
     maze = Maze()
 
@@ -45,7 +45,7 @@ def main():
     run = True
 
     game_over = False  # Add this variable to track game state
-    wait_time = 15000  # Set the initial wait time to 5000 milliseconds (5 seconds)
+    wait_time = 50000  # Set the initial wait time to 5000 milliseconds (5 seconds)
     wait_start_time = 0  # Variable to store the time when waiting started
 
     while run:
