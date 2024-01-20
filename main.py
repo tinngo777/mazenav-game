@@ -33,7 +33,7 @@ def main():
     font = pygame.font.SysFont('arial', 36)
 
     #Init tank and maze
-    starting_position = (WIDTH // 2 - 50, HEIGHT // 1.2)
+    starting_position = (WIDTH * 12 // 13, HEIGHT // 1.1)
     tank_speed = 3
     tank = Tank(starting_position, tank_speed)
     maze = Maze()
