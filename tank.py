@@ -21,7 +21,7 @@ class Tank:
         self.image = pygame.transform.rotate(self.original_image, -self.direction + 90)
         
         # Scale down the image
-        self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.6), int(self.image.get_height() * 0.6)))
+        self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.4), int(self.image.get_height() * 0.4)))
 
         # Move the tank
         radian = math.radians(self.direction)
