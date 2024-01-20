@@ -43,22 +43,22 @@ def main():
 
     clock = pygame.time.Clock()
     run = True
-    while run:
+
+    game_over = False
+    while run and not game_over:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        
+
         try:
             next(command_generator)  # Execute the next step in the command sequence
         except StopIteration:
-            pass
-
+            game_over = True
 
         if maze.check_collision(tank.get_position()):
             print("FAILUREEEEEEEE")
-            run = False
+            game_over = True
         
-
         #Draw everything
         screen.fill((255, 255, 255))
         maze.draw(screen)

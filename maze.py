@@ -1,7 +1,6 @@
 #use code from screen.py for maze.py
 import pygame
 
-
 class Maze:
     def __init__(self):
         # 1 represents walls, 0 represents paths
@@ -34,9 +33,17 @@ class Maze:
 
     def check_collision(self, position):
         x, y = position
-    # Convert position to maze grid coordinates
-    # Check if the corresponding cell in the maze is a wall
-    # Return True if it's a wall (collision), False otherwise
+
+        # Round position to maze grid coordinates
+        maze_row = round(y)
+        maze_col = round(x)
+
+        # Check if the corresponding cell in the maze is a wall
+        if 0 <= maze_row < len(self.maze) and 0 <= maze_col < len(self.maze[0]):
+            return self.maze[maze_row][maze_col] == 1
+
+        # Return True if it's a wall (collision), False otherwise
+        return False
 
 
     def draw(self, screen):
