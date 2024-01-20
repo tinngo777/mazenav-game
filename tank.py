@@ -10,7 +10,7 @@ class Tank:
         image_path = os.path.join('resources', 'tank.png')
         self.original_image = pygame.image.load(image_path)
         self.image = self.original_image.copy()  # Start without rotation
-
+        
     def update(self, rotation_step, move_forward_steps):
         # Update the direction
         self.direction += rotation_step
@@ -19,6 +19,9 @@ class Tank:
 
         # Rotate the image
         self.image = pygame.transform.rotate(self.original_image, -self.direction + 90)
+        
+        # Scale down the image
+        self.image = pygame.transform.scale(self.image, (int(self.image.get_width() * 0.6), int(self.image.get_height() * 0.6)))
 
         # Move the tank
         radian = math.radians(self.direction)
