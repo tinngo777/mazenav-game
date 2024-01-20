@@ -39,11 +39,11 @@ def main():
 
     # User-defined commands, guests will input here
     user_commands = [
-        "forward 20",
+        "forward 3",
         "right",
-        "forward 30",
+        "forward 5",
         "left",
-        "forward 40"
+        "forward 6"
         # Add more commands as needed
     ]
 
