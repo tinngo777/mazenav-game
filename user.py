@@ -1,4 +1,3 @@
-
 #input your commands here for the tank
 user_commands = [
         "forward 3",
