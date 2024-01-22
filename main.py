@@ -76,7 +76,7 @@ def main():
 
     #Init tank and maze
     starting_position = (WIDTH * 19 // 20, HEIGHT // 1.086)
-    tank_speed = 12
+    tank_speed = 7.69
     tank = Tank(starting_position, tank_speed)
     maze = Maze()
 
@@ -87,7 +87,7 @@ def main():
     run = True
 
     game_over = False  # Add this variable to track game state
-    wait_time = 50000  # Set the initial wait time to 5000 milliseconds (5 seconds)
+    wait_time = 500000  # Set the initial wait time to 5000 milliseconds (5 seconds)
     wait_start_time = 0  # Variable to store the time when waiting started
 
     while run:
@@ -102,7 +102,7 @@ def main():
                 game_over = True  # Set game_over to True when the command sequence is completed
 
             if maze.check_collision(tank.get_position()):
-                show_popup("Failureeee")
+                show_popup("FAILUREEEE")
                 game_over = True  # Set game_over to True when a collision is detected
                 wait_start_time = pygame.time.get_ticks()  # Record the start time of waiting
 
