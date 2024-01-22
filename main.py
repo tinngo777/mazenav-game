@@ -1,8 +1,23 @@
 #import pygame and other files
 import pygame
+import sys
 from tank import Tank
 from maze import Maze
 from user import user_commands
+
+#Initialize the game
+pygame.init()
+
+#Setup Window
+WIDTH = 1280
+HEIGHT = 720
+
+#Window setup, etc.
+screen = pygame.display.set_mode([WIDTH, HEIGHT])
+
+# Set up colors
+white = (255, 255, 255)
+black = (0, 0, 0)
 
 def execute_commands(tank, commands):
     for command in commands:
@@ -20,13 +35,40 @@ def execute_commands(tank, commands):
             yield pygame.time.wait(50)
 
 
-def main():
-    pygame.init()
+def show_popup(message):
 
-    #Window setup, etc.
+    #Choose font and size
+    font = pygame.font.SysFont('arial', 36)
+
+    popup_width, popup_height = 300, 150
+    popup_x = (WIDTH - popup_width) // 2
+    popup_y = (HEIGHT - popup_height) // 2
+
+    popup_rect = pygame.Rect(popup_x, popup_y, popup_width, popup_height)
+
+    pygame.draw.rect(screen, white, popup_rect)
+    pygame.draw.rect(screen, black, popup_rect, 2)
+
+    text = font.render(message, True, black)
+    text_rect = text.get_rect(center=popup_rect.center)
+    screen.blit(text, text_rect)
+
+    pygame.display.flip()
+
+    # Wait for user to close the pop-up
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+def main():
+
     #Setup Window
     WIDTH = 1280
     HEIGHT = 720
+
+    #Window setup, etc.
     screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
     #Choose font and size
@@ -60,7 +102,7 @@ def main():
                 game_over = True  # Set game_over to True when the command sequence is completed
 
             if maze.check_collision(tank.get_position()):
-                print("FAILUREEEEEEEE")
+                show_popup("Failureeee")
                 game_over = True  # Set game_over to True when a collision is detected
                 wait_start_time = pygame.time.get_ticks()  # Record the start time of waiting
 
