@@ -6,3 +6,5 @@ credits: Tin Ngo and Duy Pham
 
 
 Explosion sound credit to Sound Explorer from https://soundbible.com/1986-Bomb-Exploding.html
+
+Ta Da sound credit to Mike Koenig from https://soundbible.com/1003-Ta-Da.html#
