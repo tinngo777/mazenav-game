@@ -8,3 +8,5 @@ credits: Tin Ngo and Duy Pham
 Explosion sound credit to Sound Explorer from https://soundbible.com/1986-Bomb-Exploding.html
 
 Ta Da sound credit to Mike Koenig from https://soundbible.com/1003-Ta-Da.html#
+
+<a href="https://www.freepik.com/free-vector/realistic-sparks-weld-metal-blade-firework_7743136.htm#query=fire%20streaks&position=3&from_view=keyword&track=ais&uuid=47a24058-cba2-42f9-a677-68da981c49f6">Image by upklyak</a> on Freepik
