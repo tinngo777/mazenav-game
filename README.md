@@ -6,6 +6,9 @@ credits: Tin Ngo and Duy Pham
 
 // PLEASE ADD INSTALLATION GUIDE FOR ALL OS
 // THE LINKS FROM WHICH THEY CAN DOWNLOAD PYTHON3, THE COMMANDS.. EVERYTHING
+
+// ADD WHAT EACH FILE - main.py , mmaze.py ..etc. DOES.. Abstract of what it contains.(2-3 lines)
+
 Explosion sound credit to Sound Explorer from https://soundbible.com/1986-Bomb-Exploding.html
 
 Ta Da sound credit to Mike Koenig from https://soundbible.com/1003-Ta-Da.html#
