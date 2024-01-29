@@ -146,7 +146,7 @@ def main():
                 game_over = True
 
         # Draw everything
-        road = (135, 206, 250)
+        road = (255, 0, 0)
         screen.fill(road)
     
         #Draw the yellow circle 
