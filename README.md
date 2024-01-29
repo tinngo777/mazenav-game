@@ -4,7 +4,8 @@ how to: run 'python3 main.py' in the mazenav-game folder
 
 credits: Tin Ngo and Duy Pham
 
-
+// PLEASE ADD INSTALLATION GUIDE FOR ALL OS
+// THE LINKS FROM WHICH THEY CAN DOWNLOAD PYTHON3, THE COMMANDS.. EVERYTHING
 Explosion sound credit to Sound Explorer from https://soundbible.com/1986-Bomb-Exploding.html
 
 Ta Da sound credit to Mike Koenig from https://soundbible.com/1003-Ta-Da.html#
