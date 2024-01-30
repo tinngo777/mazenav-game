@@ -4,6 +4,10 @@ how to: run 'python3 main.py' in the mazenav-game folder
 
 credits: Tin Ngo and Duy Pham
 
+// PLEASE ADD INSTALLATION GUIDE FOR ALL OS
+// THE LINKS FROM WHICH THEY CAN DOWNLOAD PYTHON3, THE COMMANDS.. EVERYTHING
+
+// ADD WHAT EACH FILE - main.py , mmaze.py ..etc. DOES.. Abstract of what it contains.(2-3 lines)
 
 Explosion sound credit to Sound Explorer from https://soundbible.com/1986-Bomb-Exploding.html
 
