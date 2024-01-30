@@ -108,7 +108,7 @@ def main():
     winning_sound.set_volume(1.0)  # Set volume to maximum
 
     #Load the fire streak image
-    fire_streak_image = pygame.image.load('resources/1738.jpg')
+    fire_streak_image = pygame.image.load('resources/fire-flames-explosion-free-png-3770450750.png')
     fire_streak_image = pygame.transform.scale(fire_streak_image, (30, 30))
 
 
@@ -146,7 +146,7 @@ def main():
                 game_over = True
 
         # Draw everything
-        road = (255, 0, 0)
+        road = (0, 0, 200)
         screen.fill(road)
     
         #Draw the yellow circle 
@@ -154,9 +154,9 @@ def main():
         screen.blit(yellow_star, yellow_star_rect.topleft)
         
         
-        #Draw tank trail
-        for position in tank.trail:
-            screen.blit(fire_streak_image, position)
+        #Draw tank trail (skip this part)
+        #for position in tank.trail:
+        #    screen.blit(fire_streak_image, position)
         
         maze.draw(screen)
         tank.draw(screen)
