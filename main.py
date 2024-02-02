@@ -21,11 +21,13 @@ screen = pygame.display.set_mode([WIDTH, HEIGHT])
 white = (255, 255, 255)
 black = (0, 0, 0)
 
+#This function program the commands for user to input
+#including: right, left, forward
 def execute_commands(tank, commands):
     for command in commands:
         action, *value = command.split()
         if action == 'forward':
-            steps = int(value[0]) * 20  # Adjust the multiplier as needed
+            steps = int(value[0]) * 20  
             for _ in range(steps):
                 tank.update(0, 1)
                 yield pygame.time.wait(50)
@@ -36,20 +38,22 @@ def execute_commands(tank, commands):
             tank.update(-90, 0)
             yield pygame.time.wait(50)
 
-
+#This function show the popup "Win" or "Failure" according to situations
 def show_popup(message):
 
     #Choose font and size
     font = pygame.font.SysFont('arial', 36)
 
+    #Popup setting
     popup_width, popup_height = 300, 150
     popup_x = (WIDTH - popup_width) // 2
     popup_y = (HEIGHT - popup_height) // 2
 
+    #Draw the popup
     popup_rect = pygame.Rect(popup_x, popup_y, popup_width, popup_height)
-
     pygame.draw.rect(screen, white, popup_rect)
     pygame.draw.rect(screen, black, popup_rect, 2)
+
 
     text = font.render(message, True, black)
     text_rect = text.get_rect(center=popup_rect.center)
@@ -64,13 +68,12 @@ def show_popup(message):
                 pygame.quit()
                 sys.exit()
 
-def check_collision_with_circle(tank_position, circle_center, circle_radius):
-    distance = ((tank_position[0] - circle_center[0]) ** 2 + (tank_position[1] - circle_center[1]) ** 2) ** 0.5
-    return distance <= circle_radius
-
+#This function check if the tank hit the star
 def check_collision_with_star(tank_rect, star_rect):
     return tank_rect.colliderect(star_rect)
 
+
+#Main function of the game
 def main():
 
     #Setup Window
@@ -89,15 +92,13 @@ def main():
     tank = Tank(starting_position, tank_speed)
     maze = Maze()
 
-    #Circle 
-    yellow_circle_center = (WIDTH * 1 // 30, HEIGHT * 1 // 20)
-    yellow_circle_radius = 15
 
-    #Yellow Star
+    #Initialize Yellow Star
+    yellow_star_center = (WIDTH * 1 // 30, HEIGHT * 1 // 20)
     star_size = (30, 30)
     yellow_star = pygame.image.load('resources/yellow-star.png')
     yellow_star = pygame.transform.scale(yellow_star, star_size)
-    yellow_star_rect = yellow_star.get_rect(center = yellow_circle_center)
+    yellow_star_rect = yellow_star.get_rect(center = yellow_star_center)
 
     #Explosion sound
     explosion_sound = pygame.mixer.Sound('resources/Bomb_Exploding-Sound_Explorer-68256487.wav')
@@ -107,21 +108,20 @@ def main():
     winning_sound = pygame.mixer.Sound('resources/Ta Da-SoundBible.com-1884170640.wav')
     winning_sound.set_volume(1.0)  # Set volume to maximum
 
-    #Load the fire streak image
-    fire_streak_image = pygame.image.load('resources/fire-flames-explosion-free-png-3770450750.png')
-    fire_streak_image = pygame.transform.scale(fire_streak_image, (30, 30))
-
 
     #user's command will go here 
     command_generator = execute_commands(tank, user_commands)    
 
+
+    #Variables for time 
     clock = pygame.time.Clock()
     run = True
-
     game_over = False  # Add this variable to track game state
     wait_time = 500000  # Set the initial wait time to 5000 milliseconds (5 seconds)
     wait_start_time = 0  # Variable to store the time when waiting started
 
+
+    #Main game loop
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -133,37 +133,34 @@ def main():
             except StopIteration:
                 game_over = True  # Set game_over to True when the command sequence is completed
 
+            #If the tank hit the maze, run the failure sequence
             if maze.check_collision(tank.get_position()):
                 explosion_sound.play()
                 show_popup("FAILUREEEE")
                 game_over = True  # Set game_over to True when a collision is detected
                 wait_start_time = pygame.time.get_ticks()  # Record the start time of waiting
-            #Check if tank hit the circle
+            
+            #If the tank hit the star, run the winning sequence
             tank_rect = tank.get_rect() 
             if check_collision_with_star(tank_rect, yellow_star_rect):
                 winning_sound.play()
                 show_popup("You Win!")
                 game_over = True
 
-        # Draw everything
+        # Draw the road
         road = (0, 0, 200)
         screen.fill(road)
     
         #Draw the yellow circle 
-        #pygame.draw.circle(screen, (255, 255, 0), yellow_circle_center, yellow_circle_radius)
         screen.blit(yellow_star, yellow_star_rect.topleft)
         
-        
-        #Draw tank trail (skip this part)
-        #for position in tank.trail:
-        #    screen.blit(fire_streak_image, position)
-        
+        #Draw the screen
         maze.draw(screen)
         tank.draw(screen)
         pygame.display.flip()
-
         clock.tick(60)
 
+        #time setting in the game
         if game_over:
             current_time = pygame.time.get_ticks()
             elapsed_time = current_time - wait_start_time
